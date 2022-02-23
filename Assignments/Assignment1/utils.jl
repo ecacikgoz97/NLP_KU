@@ -14,10 +14,11 @@ function DataLoader(path::String, class::String)
         f = open(full_path, "r")
         review = read(f, String)
         review = lowercase(review)
-        review = replace(review, r"<br>" => " ", r"[^a-zA-Z\s-]" => " ", r"--" => " ")
+        review = replace(review, r"<br>" => " ", r"[^a-zA-Z\s-]" => " ", r"--" => " ", r"\u85" => " ")
         #review = split(review, " ")
         wordids = w2i.(split(review))
-        push!(data, (wordids, tag))
+        words = split(review, " ")
+        push!(data, (words, tag))
         close(f)
     end
     return data
@@ -46,7 +47,7 @@ function classPriors(data)
             class2 += 1
         end
     end
-    priors=[class1, class2]
+    priors=[class1/(class1+class2), class2/(class1+class2)]
 end
 
 function word_counter(data)
@@ -58,4 +59,17 @@ function word_counter(data)
         end
     end
     return cntr
+end
+
+function build_wordcount_dict(arr)
+    word_dict = Dict()
+    for review in arr
+        for word in review[1] 
+            if !haskey(word_dict, word)
+                get!(word_dict, word, 0)
+            end
+            word_dict[word] += 1
+        end
+    end
+    word_dict
 end
