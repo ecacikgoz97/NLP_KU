@@ -1,3 +1,5 @@
+using Languages, Statistics
+
 function DataLoader(path::String, class::String)
     
     if lowercase(class) == "pos"
@@ -14,51 +16,18 @@ function DataLoader(path::String, class::String)
         f = open(full_path, "r")
         review = read(f, String)
         review = lowercase(review)
-        review = replace(review, r"<br>" => " ", r"[^a-zA-Z\s-]" => " ", r"--" => " ", r"\u85" => " ")
+        #review = replace(review, stop_words => " ")
+        review = replace.(review, "<br>" => " ", r"[^a-zA-Z\s-]" => " ", "--" => " ", "\u85" => " ", "-" => " ", "\t" => " ")
         #review = split(review, " ")
-        wordids = w2i.(split(review))
+        #wordids = w2i.(split(review))
         words = split(review, " ")
+        #words = setdiff(words, stop_words)
+        words = setdiff(words, " ")
+        words = w2i.(words)
         push!(data, (words, tag))
         close(f)
     end
     return data
-end
-
-function freqWords(data)
-    """
-    Calculate word frequencies in a dictionary.
-    """
-    words = Dict()
-    for review in data
-        for word in review[1]
-            words[word] = get(words, word, 0) + 1
-        end
-    end
-    return words
-end
-
-function classPriors(data)
-    class1 = 0
-    class2 = 0
-    for review in data
-        if review[2] == 1
-            class1 += 1
-        else
-            class2 += 1
-        end
-    end
-    priors=[class1/(class1+class2), class2/(class1+class2)]
-end
-
-function word_counter(data)
-    num_words = Dict()
-    cntr = 0
-    for review in data
-        for word in review[1]
-            cntr+=1
-        end
-    end
-    return cntr
 end
 
 function build_wordcount_dict(arr)
@@ -73,3 +42,4 @@ function build_wordcount_dict(arr)
     end
     word_dict
 end
+
