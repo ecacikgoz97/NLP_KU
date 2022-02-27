@@ -1,6 +1,20 @@
 using Languages, Statistics
 
 function DataLoader(path::String, class::String)
+    """
+    This function labels the corresponding reviews either 1 or 2
+    to positive and negative classes. Then it pre-process the data as:
+    lowercase each word,remove specified punctuations, split the 
+    sentences, and finally convert words to IDs.
+    
+    Arguments:
+        path(String): corresponding data path that to be download
+        class(String): specifiy whether the path is class of positives
+                       or negatives.
+    Return:
+        data(list): returns the pre-processed data as nested list.
+    
+    """
     
     if lowercase(class) == "pos"
         tag = 1
@@ -16,12 +30,8 @@ function DataLoader(path::String, class::String)
         f = open(full_path, "r")
         review = read(f, String)
         review = lowercase(review)
-        #review = replace(review, stop_words => " ")
         review = replace.(review, "<br>" => " ", r"[^a-zA-Z\s-]" => " ", "--" => " ", "\u85" => " ", "-" => " ", "\t" => " ")
-        #review = split(review, " ")
-        #wordids = w2i.(split(review))
         words = split(review, " ")
-        #words = setdiff(words, stop_words)
         words = setdiff(words, " ")
         words = w2i.(words)
         push!(data, (words, tag))
@@ -31,6 +41,18 @@ function DataLoader(path::String, class::String)
 end
 
 function build_wordcount_dict(arr)
+    """
+    This functions counts the words for specific review in given array.
+    
+    Arguments:
+        arr(list): List of reviews.
+    
+    Return:
+        word_dict(dict): number of specific words as dictionary. Keys
+                         are the words and Values are the number of
+                         of that word in document.
+    
+    """
     word_dict = Dict()
     for review in arr
         for word in review[1] 
