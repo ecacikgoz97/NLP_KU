@@ -1,5 +1,4 @@
 # Comp442 Assignment1: Large Movie Review Dataset
-## Prepared by Emre Can Acikgoz
 This repo contatins the implementation of Naive Bayes algorithm for Sentiment analysis with Julia.
 
 # Overview
@@ -12,4 +11,5 @@ Total 50,000 reviews with 25,000 are in postive class and 25,000 are in negative
 
 ## Results
 |Train Set Accuracy|  88.164% | 0.916919 seconds|
+| ---| --- | --- |
 |Test Set Accuracy| 87.884%| 0.568173 seconds|
