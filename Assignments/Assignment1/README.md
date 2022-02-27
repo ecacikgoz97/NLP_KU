@@ -1,7 +1,7 @@
 # Comp442 Assignment1: Large Movie Review Dataset
-This repo contatins the implementation of Naive Bayes algorithm for Sentiment Analysis by using [Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/) with Julia.
+This repo contains the implementation of Naive Bayes algorithm for Sentiment Analysis by using [Large Movie Review Dataset](https://ai.stanford.edu/~amaas/data/sentiment/) with Julia.
 
-# Overview
+## Overview
 I have achieved 88.164% train set accuracy and 87.884% test set accuracy by using a Naive Bayes approach which basically predicts the class labels by doing a bag-of-words assumption. For pre-processing; I lowercased it, ignore the unncesessary punctuations, split our sentences to words, and convert our words to IDs. Other techniques couldn't help me to achieve higher results.
 
 ## Data
