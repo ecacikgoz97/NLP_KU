@@ -12,8 +12,8 @@ Total 50,000 reviews with 25,000 of them in postive class and 25,000 of them in 
 ## Results
 |Dataset Type|  Accuracy | Time|
 | ---| --- | --- |
-|Training Set|  88.164% | 0.916919 seconds|
-|Test Set| 87.884%| 0.568173 seconds|
+|Training Set|  88.164% | 0.916919s|
+|Test Set| 87.884%| 0.568173s|
 
 
 ### Reference
