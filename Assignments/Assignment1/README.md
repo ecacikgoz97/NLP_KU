@@ -7,7 +7,7 @@ I have achieved 88.164% train set accuracy and 87.884% test set accuracy by usin
 ## Data
 Train set contains 25,000 reviews with 12,500 postive and 12,500 negative classes. <br />
 Test set contains 25,000 reviews with 12,500 postive and 12,500 negative classes. <br />
-Total 50,000 reviews with 25,000 are in postive class and 25,000 are in negative class. <br />
+Total 50,000 reviews with 25,000 of them in postive class and 25,000 of them in negative class. <br />
 
 ## Results
 |Dataset Type|  Accuracy | Time|
