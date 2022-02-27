@@ -1,1 +1,1 @@
-# Natural_Language_Processing_KU
+# NLP_KU
