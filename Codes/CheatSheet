@@ -1,0 +1,94 @@
+===> get!(collection, key, default):
+
+Return the value stored for the given key, or if no mapping for the key is present, store key => default, and return default.
+
+Examples
+julia> d = Dict("a"=>1, "b"=>2, "c"=>3);
+
+julia> get!(d, "a", 5)
+1
+
+julia> get!(d, "d", 4)
+4
+
+julia> d
+Dict{String, Int64} with 4 entries:
+  "c" => 3
+  "b" => 2
+  "a" => 1
+  "d" => 4
+  
+  
+===> push!(collection, items...) -> collection:
+
+Insert one or more items in collection. If collection is an ordered container, the items are inserted at the end (in the given order).
+
+Examples
+julia> push!([1, 2, 3], 4, 5, 6)
+6-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 
+===> first(coll)
+Get the first element of an iterable collection. Return the start point of an AbstractRange even if it is empty.
+See also: only, firstindex, last.
+
+Examples
+julia> first(2:2:10)
+2
+
+julia> first([1; 2; 3; 4])
+1
+
+first(itr, n::Integer)
+Get the first n elements of the iterable collection itr, or fewer elements if itr is not long enough.
+
+Examples
+julia> first(["foo", "bar", "qux"], 2)
+2-element Vector{String}:
+ "foo"
+ "bar"
+
+julia> first(1:6, 10)
+1:6
+
+julia> first(Bool[], 1)
+Bool[]
+
+
+######################################## Knet ########################################
+===> conv4(w, x; kwargs...):
+Execute convolutions or cross-correlations using filters specified with w over tensor x.
+
+Keywords
+padding=0: the number of extra zeros implicitly concatenated at the start and end of each dimension.
+stride=1: the number of elements to slide to reach the next filtering window.
+dilation=1: dilation factor for each dimension.
+mode=0: 0 for convolution and 1 for cross-correlation (which flips the filter).
+alpha=1: can be used to scale the result.
+group=1: can be used to perform grouped convolutions.
+
+
+===> pool(x; kwargs...):
+Compute pooling of input values (i.e., the maximum or average of several adjacent values) to produce an output with smaller height and/or width.
+
+Keywords:
+window=2: the pooling window size for each dimension.
+padding=0: the number of extra zeros implicitly concatenated at the start and at the end of each dimension.
+stride=window: the number of elements to slide to reach the next pooling window.
+mode=0: 0 for max, 1 for average including padded values, 2 for average excluding padded values, 3 for deterministic max.
+maxpoolingNanOpt=1: Nan numbers are not propagated if 0, they are propagated if 1.
+alpha=1: can be used to scale the result.
+
+
+
+
+
+
+
+
+
