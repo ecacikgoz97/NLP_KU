@@ -17,7 +17,7 @@ Our dataset is from the Penn Treebank dataset provided by Mikolov: http://www.fi
 Validation perplexity of the best model: 74.56162745696571 which below the threshold of "perplexity under 190" constraint as a factor of 2.548.
 
 ## Issues
-There are some buggs due to the randomness and some updates Knet we guess, which can be neglected since most important tests are passed succesfully.
+There are some buggs due to the randomness and maybe some updates in Knet we guess, which can be neglected since the most important tests are passed succesfully.
 
 
 ### Reference
