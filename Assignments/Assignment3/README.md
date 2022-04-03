@@ -8,7 +8,7 @@ I have achieved **8.23 BLUE Score** in 10 epochs with a basic embedding-encoder-
 Our dataset is Turkish-English pair from [TED Talks Dataset](https://github.com/neulab/word-embeddings-for-nmt).
 
 ## Results
-'BLEU = 8.23, 37.0/11.9/4.9/2.1 (BP=1.000, ratio=1.113, hyp_len=91854, ref_len=82502)'
+`BLEU = 8.23, 37.0/11.9/4.9/2.1 (BP=1.000, ratio=1.113, hyp_len=91854, ref_len=82502)`
 
 
 ## Issues
